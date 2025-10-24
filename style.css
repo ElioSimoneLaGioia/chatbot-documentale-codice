@@ -1,0 +1,230 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f7fb;
+  --bg-dark: #181a1f;
+  --surface: #ffffff;
+  --surface-dark: #23252b;
+  --primary: #4757e6;
+  --primary-dark: #7f8aff;
+  --border: #d9dce8;
+  --border-dark: #2e313a;
+  --text: #1f2d3d;
+  --text-dark: #e8ecf5;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+}
+
+main {
+  flex: 1;
+  width: min(1100px, 95vw);
+  margin: 0 auto 4rem;
+}
+
+.app-header {
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.app-header h1 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.code-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 34px -18px rgba(32, 47, 93, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .code-input {
+    background: var(--surface-dark);
+    border-color: var(--border-dark);
+    box-shadow: none;
+  }
+}
+
+.code-input h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.hint {
+  margin: 0;
+  color: rgba(31, 45, 61, 0.7);
+  font-size: 0.9rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hint {
+    color: rgba(232, 236, 245, 0.7);
+  }
+}
+
+.drop-area {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  display: grid;
+  place-items: center;
+}
+
+.drop-area span {
+  font-size: 0.95rem;
+}
+
+.drop-area input {
+  display: none;
+}
+
+.drop-area.dragover {
+  border-color: var(--primary);
+  background: rgba(71, 87, 230, 0.08);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 160px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+@media (prefers-color-scheme: dark) {
+  textarea {
+    background: rgba(23, 26, 32, 0.75);
+    border-color: var(--border-dark);
+    color: var(--text-dark);
+  }
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(71, 87, 230, 0.2);
+}
+
+.clear-btn,
+.primary {
+  border: none;
+  border-radius: 999px;
+  padding: 0.6rem 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.clear-btn {
+  align-self: flex-end;
+  background: transparent;
+  color: var(--primary);
+}
+
+.clear-btn:hover {
+  text-decoration: underline;
+}
+
+.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  box-shadow: 0 14px 30px -12px rgba(71, 87, 230, 0.6);
+}
+
+.primary:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.context,
+.actions,
+.result {
+  margin-top: 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: 0 12px 34px -18px rgba(32, 47, 93, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  .context,
+  .actions,
+  .result {
+    background: var(--surface-dark);
+    border-color: var(--border-dark);
+    box-shadow: none;
+  }
+}
+
+.disclaimer {
+  margin-top: 0.5rem;
+  color: rgba(31, 45, 61, 0.7);
+}
+
+@media (prefers-color-scheme: dark) {
+  .disclaimer {
+    color: rgba(232, 236, 245, 0.7);
+  }
+}
+
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  background: rgba(0, 0, 0, 0.04);
+  padding: 1rem;
+  border-radius: 12px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+  pre {
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  color: rgba(31, 45, 61, 0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+  footer {
+    color: rgba(232, 236, 245, 0.6);
+  }
+}

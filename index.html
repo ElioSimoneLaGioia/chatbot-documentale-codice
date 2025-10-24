@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analisi Release Notes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Generatore note di rilascio</h1>
+      <p>
+        Carica o incolla le versioni del codice da confrontare. Il sistema
+        preparerà le note di rilascio e la scheda tecnica per la revisione.
+      </p>
+    </header>
+
+    <main>
+      <section class="inputs">
+        <div class="code-input" data-role="old">
+          <h2>Versione precedente (v1)</h2>
+          <p class="hint">Seleziona un file oppure trascinalo nell'area qui sotto.</p>
+          <label class="drop-area" data-target="old">
+            <span>Trascina qui il file v1 oppure clicca per selezionarlo</span>
+            <input type="file" accept=".txt,.py,.js,.java,.json,.md,.html,.ts,.tsx,.jsx,.rb,.go,.rs,.php,.c,.cpp" />
+          </label>
+          <textarea id="oldCode" placeholder="Incolla qui il codice della versione precedente"></textarea>
+          <button class="clear-btn" data-clear="old">Svuota</button>
+        </div>
+
+        <div class="code-input" data-role="new">
+          <h2>Nuova versione (v2)</h2>
+          <p class="hint">Seleziona un file oppure trascinalo nell'area qui sotto.</p>
+          <label class="drop-area" data-target="new">
+            <span>Trascina qui il file v2 oppure clicca per selezionarlo</span>
+            <input type="file" accept=".txt,.py,.js,.java,.json,.md,.html,.ts,.tsx,.jsx,.rb,.go,.rs,.php,.c,.cpp" />
+          </label>
+          <textarea id="newCode" placeholder="Incolla qui il codice della nuova versione"></textarea>
+          <button class="clear-btn" data-clear="new">Svuota</button>
+        </div>
+      </section>
+
+      <section class="context">
+        <h2>Contesto (opzionale)</h2>
+        <textarea id="context" placeholder="Es: Linguaggio, modulo, dominio business"></textarea>
+      </section>
+
+      <section class="actions">
+        <button id="generateBtn" class="primary">Genera analisi</button>
+        <p class="disclaimer">
+          Il pulsante genera il payload da inviare al servizio di analisi. Collega il tuo endpoint backend
+          per completare l'elaborazione automatica.
+        </p>
+      </section>
+
+      <section class="result" aria-live="polite">
+        <h2>Anteprima payload</h2>
+        <pre id="resultPreview">Compila i campi e clicca &quot;Genera analisi&quot; per vedere il payload.</pre>
+      </section>
+    </main>
+
+    <footer>
+      <small>&copy; 2024 Analisi Release Notes</small>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
